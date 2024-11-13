@@ -15,7 +15,6 @@ export default function TableData() {
         if (state.search_text.size > 5) {
             parse(state.search_text, {
                 complete: function (results) {
-                    console.log(results.data)
                     setRecords(results.data as string[][])
                 }
             })
@@ -28,12 +27,12 @@ export default function TableData() {
                 records[0][0] === 'PaperCut Print Logger - http://www.papercut.com/' ?
                     <>
                         <PrintResume records={records} />
-                        <section className='overflow-x-auto border-t border-black'>
+                        <section className='overflow-x-auto border border-black m-5'>
                             <table>
                                 <thead>
                                     <tr className='border-b border-orange-600 bg-orange-300 uppercase'>
                                         {records[1].map((record, index) => (
-                                            <th key={index} className='border-r border-black last-of-type:border-r-0'>{record}</th>
+                                            <th key={index} className='border-r border-black last-of-type:border-r-0 px-10'>{record}</th>
                                         ))}
                                     </tr>
                                 </thead>
@@ -41,7 +40,7 @@ export default function TableData() {
                                     {records.filter((records, index) => index > 1).map((record, index) => (
                                         <tr key={index} className='border-b last-of-type:border-b-0 border-black'>
                                             {record.map((item, index) => (
-                                                <td key={index} className='border-r border-black last-of-type:border-r-0'>{item}</td>
+                                                <td key={index} className='border-r border-black last-of-type:border-r-0 text-center'>{item}</td>
                                             ))}
                                         </tr>
                                     ))}

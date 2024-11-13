@@ -19,8 +19,8 @@ export default function SearchBar() {
   }
 
   return (
-    <header className='flex border bg-egg-400 border-black py-2 px-20 shadow-md h-14'>
-      <label htmlFor='file_csv' className='flex items-center w-full ring-1 hover:ring-2 ring-gray-900 hover:ring-orange-600 text-lg pl-5 cursor-pointer' >
+    <header className='flex border bg-egg-400 border-black py-4 px-20 shadow-md'>
+      <label htmlFor='file_csv' className='flex items-center w-full ring-1 hover:ring-2 ring-gray-900 hover:ring-orange-600 text-lg pl-5 py-1 cursor-pointer' >
         <p className='uppercase text-gray-700'>{search.name}</p>
       </label>
       <input

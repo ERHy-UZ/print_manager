@@ -7,7 +7,7 @@ export type ManagerState = {
 }
 
 export const initialState: ManagerState = {
-    search_text: new File(['empty'], 'empty.csv')
+    search_text: new File(['empty'], 'Ingrese CSV...')
 }
 
 export const managerReducer = (
