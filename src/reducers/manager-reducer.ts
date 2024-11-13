@@ -1,13 +1,13 @@
 
 export type ManagerActions =
-    { type: 'set-search-text', payload: {search: File} }
+    { type: 'set-search-text', payload: {search: File | null} }
 
 export type ManagerState = {
-    search_text: File
+    search_text: File | null
 }
 
 export const initialState: ManagerState = {
-    search_text: new File(['empty'], 'Ingrese CSV...')
+    search_text: typeof window !== "undefined" ? new File(['empty'], 'Ingrese CSV...') : null
 }
 
 export const managerReducer = (

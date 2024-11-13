@@ -11,8 +11,8 @@ export default function TableData() {
 
     const { state } = useManager()
 
-    useEffect(() => {
-        if (state.search_text.size > 5) {
+    useEffect(() => { 
+        if (state.search_text && state.search_text.size > 5) {
             parse(state.search_text, {
                 complete: function (results) {
                     setRecords(results.data as string[][])
