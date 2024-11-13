@@ -2,6 +2,7 @@
 
 import { useManager } from "@/app/hooks/useManager"
 import { ChangeEvent, useState } from "react"
+import { FaFileUpload } from "react-icons/fa";
 
 export default function SearchBar() {
 
@@ -33,7 +34,7 @@ export default function SearchBar() {
       <button
         onClick={handleUpload}
         className='bg-orange-300 hover:bg-orange-500 px-5 ring-1 ring-orange-600 rounded-r-sm text-xl'>
-        UP
+        <FaFileUpload />
       </button>
     </header>
   )
