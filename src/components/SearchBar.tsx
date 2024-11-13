@@ -32,7 +32,7 @@ export default function SearchBar() {
       />
       <button
         onClick={handleUpload}
-        className='bg-orange-500 hover:bg-orange-600 px-5 ring-1 ring-orange-600 rounded-r-sm text-xl'>
+        className='bg-orange-300 hover:bg-orange-500 px-5 ring-1 ring-orange-600 rounded-r-sm text-xl'>
         UP
       </button>
     </header>
