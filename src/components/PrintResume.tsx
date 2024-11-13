@@ -17,7 +17,7 @@ export default function PrintResume({ records }: PrintResumeProps) {
     return (
         <section className='grid grid-cols-2 border border-orange-600 bg-orange-300 rounded-sm m-5 text-2xl uppercase py-10'>
             <p className='flex justify-center'>{usrName}</p>
-            <p className='flex justify-center'>{printedPages ? `${printedPages} hojas` : 'error al contar  '}</p>
+            <p className='flex justify-center'>{printedPages ? `${printedPages} ${printedPages > 1 ? 'hojas' : 'hoja' }` : 'error al contar  '}</p>
         </section>
     )
 }
