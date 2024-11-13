@@ -2,6 +2,7 @@
 
 import { parse } from "papaparse";
 import { useManager } from "@/app/hooks/useManager";
+import PrintResume from "@/components/PrintResume";
 import { useState, useEffect } from "react";
 
 export default function TableData() {
@@ -22,28 +23,40 @@ export default function TableData() {
     }, [state.search_text])
 
     return (
-        <main className='border bg-egg-500 border-black mt-5 text-xs overflow-x-auto'>
+        <main className='border bg-egg-500 border-black mt-5 text-xs'>
             {records.length ?
-                <table>
-                    <thead>
-                        <tr className='border-b border-black'>
-                            {records[0].map((record, index) => (
-                                <th key={index} className='border-r border-black last-of-type:border-r-0'>{record}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {records.filter((records, index) => index > 0).map((record, index) => (
-                            <tr key={index} className='border-b last-of-type:border-b-0 border-black'>
-                                {record.map((item, index) => (
-                                    <td key={index} className='border-r border-black last-of-type:border-r-0'>{item}</td>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                records[0][0] === 'PaperCut Print Logger - http://www.papercut.com/' ?
+                    <>
+                        <PrintResume records={records} />
+                        <section className='overflow-x-auto border-t border-black'>
+                            <table>
+                                <thead>
+                                    <tr className='border-b border-orange-600 bg-orange-300 uppercase'>
+                                        {records[1].map((record, index) => (
+                                            <th key={index} className='border-r border-black last-of-type:border-r-0'>{record}</th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {records.filter((records, index) => index > 1).map((record, index) => (
+                                        <tr key={index} className='border-b last-of-type:border-b-0 border-black'>
+                                            {record.map((item, index) => (
+                                                <td key={index} className='border-r border-black last-of-type:border-r-0'>{item}</td>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </section>
+                    </>
+                    :
+                    <section className='flex w-full h-full justify-center items-center'>
+                        <h1 className='uppercase text-2xl font-semibold bg-red-500 py-2 px-10 m-5 rounded-[3px]'>Archivo no valido</h1>
+                    </section>
                 :
-                <h1 className='uppercase'>seleccione un archivo primero</h1>
+                <section className='flex w-full h-full justify-center items-center'>
+                    <h1 className='uppercase text-2xl font-semibold bg-red-500 py-2 px-10 m-5 rounded-[3px]'>seleccione un archivo primero</h1>
+                </section>
             }
         </main>
     )

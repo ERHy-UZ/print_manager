@@ -1,7 +1,6 @@
 import SearchBar from "@/components/SearchBar";
 import TableData from "@/components/TableData";
 
-
 export default function Home() {
 
   return (
