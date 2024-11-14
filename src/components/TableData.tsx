@@ -8,10 +8,11 @@ import { useState, useEffect } from "react";
 export default function TableData() {
 
     const [records, setRecords] = useState<string[][]>([])
+    const [message, setMessage] = useState<string>('')
 
     const { state } = useManager()
 
-    useEffect(() => { 
+    useEffect(() => {
         if (state.search_text && state.search_text.size > 5) {
             parse(state.search_text, {
                 complete: function (results) {
@@ -20,6 +21,13 @@ export default function TableData() {
             })
         }
     }, [state.search_text])
+
+    useEffect(() => {
+        fetch('/api')
+            .then(response => response.json())
+            .then(data => setMessage(data.message))
+            .catch(error => console.log('Error: ', error))
+    }, [])
 
     return (
         <main className='border bg-egg-500 border-black mt-5 text-xs'>
@@ -54,7 +62,7 @@ export default function TableData() {
                     </section>
                 :
                 <section className='flex w-full h-full justify-center items-center'>
-                    <h1 className='uppercase text-2xl font-semibold bg-red-500 py-2 px-10 m-5 rounded-[3px]'>seleccione un archivo primero</h1>
+                    <h1 className='uppercase text-2xl font-semibold bg-red-500 py-2 px-10 m-5 rounded-[3px]'>Selecciona un archivo</h1>
                 </section>
             }
         </main>
