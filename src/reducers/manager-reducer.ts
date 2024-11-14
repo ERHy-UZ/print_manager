@@ -7,7 +7,7 @@ export type ManagerState = {
 }
 
 export const initialState: ManagerState = {
-    search_text: typeof window !== "undefined" ? new File(['empty'], 'Ingrese CSV...') : null
+    search_text: typeof window !== "undefined" ? new File(['empty'], 'Seleccione CSV...') : null
 }
 
 export const managerReducer = (

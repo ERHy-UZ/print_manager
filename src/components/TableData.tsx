@@ -30,17 +30,17 @@ export default function TableData() {
                         <section className='overflow-x-auto border border-black m-5'>
                             <table>
                                 <thead>
-                                    <tr className='border-b border-orange-600 bg-orange-300 uppercase'>
+                                    <tr className='border-b border-orange-600 bg-orange-300'>
                                         {records[1].map((record, index) => (
-                                            <th key={index} className='border-r border-black last-of-type:border-r-0 px-10'>{record}</th>
+                                            <th key={index} className='border-r border-orange-600 last-of-type:border-r-0 px-10 text-sm uppercase'>{record}</th>
                                         ))}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {records.filter((records, index) => index > 1).map((record, index) => (
-                                        <tr key={index} className='border-b last-of-type:border-b-0 border-black'>
+                                        <tr key={index} className='border-b last-of-type:border-b-0 border-yellow-900 bg-egg-900 '>
                                             {record.map((item, index) => (
-                                                <td key={index} className='border-r border-black last-of-type:border-r-0 text-center'>{item}</td>
+                                                <td key={index} className='border-r border-yellow-900 last-of-type:border-r-0 text-center py-1'>{item}</td>
                                             ))}
                                         </tr>
                                     ))}
