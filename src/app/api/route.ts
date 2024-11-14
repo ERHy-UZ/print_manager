@@ -12,3 +12,4 @@ export async function GET(): Promise<NextResponse<ResponseData>> {
 
     return NextResponse.json(data)
 }
+
