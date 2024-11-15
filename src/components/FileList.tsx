@@ -12,6 +12,7 @@ type FileListProps = {
 export default function FileList({ main_file }: FileListProps) {
 
     const { state, dispatch } = useManager()
+    
     const [history, setHistory] = useState<string[]>([main_file])
     const [isBackSelected, setBackSelected] = useState<boolean>(false)
 
