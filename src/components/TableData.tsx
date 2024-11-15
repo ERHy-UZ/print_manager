@@ -22,12 +22,6 @@ export default function TableData() {
         }
     }, [state.search_text])
 
-    useEffect(() => {
-        fetch('/api')
-            .then(response => response.json())
-            .then(data => setMessage(data.message))
-            .catch(error => console.log('Error: ', error))
-    }, [])
 
     return (
         <main className='border bg-egg-500 border-black mt-5 text-xs'>
