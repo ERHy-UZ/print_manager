@@ -3,20 +3,17 @@
 import { parse } from "papaparse";
 import { useManager } from "@/app/hooks/useManager";
 import PrintResume from "@/components/PrintResume";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function TableData() {
 
-    const [records, setRecords] = useState<string[][]>([])
-    const [message, setMessage] = useState<string>('')
-
-    const { state } = useManager()
+    const { state, dispatch } = useManager()
 
     useEffect(() => {
         if (state.search_text && state.search_text.size > 5) {
             parse(state.search_text, {
                 complete: function (results) {
-                    setRecords(results.data as string[][])
+                    dispatch({ type: 'set-records', payload: { records: results.data as string[][] } })
                 }
             })
         }
@@ -25,21 +22,21 @@ export default function TableData() {
 
     return (
         <main className='border bg-egg-500 border-black mt-5 text-xs'>
-            {records.length ?
-                records[0][0] === 'PaperCut Print Logger - http://www.papercut.com/' ?
+            {state.records.length ?
+                state.records[0][0] === 'PaperCut Print Logger - http://www.papercut.com/' ?
                     <>
-                        <PrintResume records={records} />
+                        <PrintResume records={state.records} />
                         <section className='overflow-x-auto border border-black m-5'>
                             <table>
                                 <thead>
                                     <tr className='border-b border-orange-600 bg-orange-300'>
-                                        {records[1].map((record, index) => (
+                                        {state.records[1].map((record, index) => (
                                             <th key={index} className='border-r border-orange-600 last-of-type:border-r-0 px-10 text-sm uppercase'>{record}</th>
                                         ))}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {records.filter((records, index) => index > 1).map((record, index) => (
+                                    {state.records.filter((records, index) => index > 1).map((record, index) => (
                                         <tr key={index} className='border-b last-of-type:border-b-0 border-yellow-900 bg-egg-900 '>
                                             {record.map((item, index) => (
                                                 <td key={index} className='border-r border-yellow-900 last-of-type:border-r-0 text-center py-1'>{item}</td>
