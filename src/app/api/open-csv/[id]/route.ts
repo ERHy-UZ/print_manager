@@ -6,7 +6,7 @@ import { promisify } from "util"
 
 export async function GET(req: Request, { params }: { params: { id: string } }) {
 
-    const { id } = params
+    const { id } = await params
     const data : string[][] = []
 
     const auth = new google.auth.GoogleAuth({
