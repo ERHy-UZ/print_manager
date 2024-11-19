@@ -3,7 +3,7 @@ import { google } from "googleapis"
 
 export async function GET(req: Request, { params }: { params: { id: string } }) {
 
-    const { id } = await params
+    const { id } = params
 
     const auth = new google.auth.GoogleAuth({
         keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
