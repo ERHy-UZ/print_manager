@@ -12,7 +12,7 @@ type FileListProps = {
 export default function FileList({ main_file }: FileListProps) {
 
     const { state, dispatch } = useManager()
-    
+
     const [history, setHistory] = useState<string[]>([main_file])
     const [isBackSelected, setBackSelected] = useState<boolean>(false)
 
@@ -36,6 +36,15 @@ export default function FileList({ main_file }: FileListProps) {
         }
     }, [state.selectedFile])
 
+    useEffect(() => {
+        if (state.selectedCSV) {
+            fetch(`/api/open-csv/${state.selectedCSV}`)
+                .then(response => response.json())
+                .then(data => dispatch({type: 'set-records', payload: {records: data}}))
+                .catch(error => console.log('Error: ', error))
+        }
+    }, [state.selectedCSV])
+
     const handleBackButton = () => {
         if (history.length > 1) {
             setBackSelected(true)
@@ -48,7 +57,7 @@ export default function FileList({ main_file }: FileListProps) {
     return (
         <section className='border bg-egg-500 border-black mt-5 pb-5'>
             <menu className='bg-orange-300 border-b border-orange-500 mb-5 p-1'>
-                <PiKeyReturnFill className={`text-2xl ${history.length == 1 && 'text-orange-700'} ${history.length > 1 && 'cursor-pointer'}`} onClick={handleBackButton} />
+                <PiKeyReturnFill className={`text-2xl ${history.length == 1 && 'text-orange-300'} ${history.length > 1 && 'cursor-pointer'}`} onClick={handleBackButton} />
             </menu>
             {state.gFiles.length > 0 && state.gFiles[0].mimeType !== 'undef' ?
                 <ol className='grid grid-cols-4 gap-3'>
@@ -58,11 +67,11 @@ export default function FileList({ main_file }: FileListProps) {
                                 <FaFolder className='text-[5rem] text-amber-500 hover:text-amber-400 cursor-pointer' onDoubleClick={() => dispatch({ type: 'set-selected-file', payload: { file: file.id } })} />
                                 :
                                 file.name.endsWith('csv') ?
-                                    <FaFile className='text-[5rem] text-blue-400 hover:text-blue-300 cursor-pointer' />
+                                    <FaFile className='text-[5rem] text-blue-400 hover:text-blue-300 cursor-pointer' onDoubleClick={() => dispatch({ type: 'set-selected-csv', payload: { csv: file.id } })} />
                                     :
                                     <FaFileCircleXmark className='text-[5rem] text-blue-200' />
                             }
-                            <p>{file.name}</p>
+                            <p className='truncate w-52 text-center'>{file.name}</p>
                         </li>
                     ))}
                 </ol>
