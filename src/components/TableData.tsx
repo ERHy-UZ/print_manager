@@ -21,7 +21,7 @@ export default function TableData() {
 
 
     return (
-        <main className='border bg-egg-500 border-black mt-5 text-xs'>
+        <main className='border bg-egg-600 border-black mt-5 text-xs'>
             {state.records.length ?
                 state.records[0][0] === 'PaperCut Print Logger - http://www.papercut.com/' ?
                     <>

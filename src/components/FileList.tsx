@@ -56,7 +56,7 @@ export default function FileList({ main_file }: FileListProps) {
     }
 
     return (
-        <section className='border bg-egg-500 border-black mt-5 pb-5'>
+        <section className='border bg-egg-600 border-black mt-5 pb-5'>
             <menu className='bg-orange-300 border-b border-orange-500 mb-5 p-1'>
                 <PiKeyReturnFill className={`text-2xl ${history.length == 1 && 'text-orange-300'} ${history.length > 1 && 'cursor-pointer'}`} onClick={handleBackButton} />
             </menu>
