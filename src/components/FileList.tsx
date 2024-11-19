@@ -40,8 +40,9 @@ export default function FileList({ main_file }: FileListProps) {
         if (state.selectedCSV) {
             fetch(`/api/open-csv/${state.selectedCSV}`)
                 .then(response => response.json())
-                .then(data => dispatch({type: 'set-records', payload: {records: data}}))
+                .then(data => dispatch({ type: 'set-records', payload: { records: data } }))
                 .catch(error => console.log('Error: ', error))
+                .finally(() => dispatch({ type: 'set-selected-csv', payload: { csv: '' } }))
         }
     }, [state.selectedCSV])
 
