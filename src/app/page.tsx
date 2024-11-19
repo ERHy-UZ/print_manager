@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <div className='mx-48 my-10'>
       <SearchBar />
-      <TableData />
       <FileList main_file={main_file!}/>
+      <TableData />
     </div>
   );
 }

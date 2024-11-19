@@ -17,7 +17,7 @@ export type ManagerState = {
 }
 
 export const initialState: ManagerState = {
-    search_text: typeof window !== "undefined" ? new File(['empty'], 'Seleccione CSV...') : null,
+    search_text: typeof window !== "undefined" ? new File(['empty'], 'Seleccione CSV local...') : null,
     gFiles: [],
     selectedFile: '',
     selectedCSV: '',
