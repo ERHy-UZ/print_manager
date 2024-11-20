@@ -2,8 +2,9 @@
 
 import { useManager } from "@/app/hooks/useManager";
 import { useState, useEffect } from "react"
-import { FaFolder, FaFile, FaFileCircleXmark, FaFileInvoice } from "react-icons/fa6";
+import { FaFolder, FaFileCircleXmark } from "react-icons/fa6";
 import { PiKeyReturnFill } from "react-icons/pi";
+import { CsvFileIcon } from "./util/CsvFileIcon";
 
 type FileListProps = {
     main_file: string
@@ -67,10 +68,7 @@ export default function FileList({ main_file }: FileListProps) {
                                 <FaFolder className='text-[5rem] text-amber-500 hover:text-amber-400 cursor-pointer' onDoubleClick={() => dispatch({ type: 'set-selected-file', payload: { file: file.id } })} />
                                 :
                                 file.name.endsWith('csv') ?
-                                    file.id === state.selectedCSV ?
-                                        <FaFileInvoice className={`text-[5rem] text-green-500`} />
-                                        :
-                                        <FaFile className={`text-[5rem] text-blue-400 hover:text-blue-300 cursor-pointer`} onDoubleClick={() => dispatch({ type: 'set-selected-csv', payload: { csv: file.id } })} />
+                                    <CsvFileIcon fileId={file.id} fileName={file.name} />
                                     :
                                     <FaFileCircleXmark className='text-[5rem] text-blue-200' />
                             }
