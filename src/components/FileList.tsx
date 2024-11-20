@@ -1,21 +1,19 @@
 'use client'
 
 import { useManager } from "@/app/hooks/useManager";
-import { useState, useEffect } from "react"
+import { Dispatch, SetStateAction, useEffect } from "react"
 import { FaFolder, FaFileCircleXmark } from "react-icons/fa6";
-import { PiKeyReturnFill } from "react-icons/pi";
 import { CsvFileIcon } from "./util/CsvFileIcon";
 
 type FileListProps = {
-    main_file: string
+    isBackSelected: boolean
+    setBackSelected: Dispatch<SetStateAction<boolean>>
+    setHistory: Dispatch<SetStateAction<string[]>>
 }
 
-export default function FileList({ main_file }: FileListProps) {
+export default function FileList({ isBackSelected, setBackSelected, setHistory }: FileListProps) {
 
     const { state, dispatch } = useManager()
-
-    const [history, setHistory] = useState<string[]>([main_file])
-    const [isBackSelected, setBackSelected] = useState<boolean>(false)
 
     useEffect(() => {
         fetch(`/api/obtain-files`)
@@ -26,7 +24,7 @@ export default function FileList({ main_file }: FileListProps) {
 
     useEffect(() => {
         if (state.selectedFile) {
-            if (!isBackSelected) { setHistory([...history, state.selectedFile]) }
+            if (!isBackSelected) { setHistory(prevState => [...prevState, state.selectedFile]) }
 
             setBackSelected(false)
 
@@ -46,22 +44,11 @@ export default function FileList({ main_file }: FileListProps) {
         }
     }, [state.selectedCSV])
 
-    const handleBackButton = () => {
-        if (history.length > 1) {
-            setBackSelected(true)
-
-            dispatch({ type: 'set-selected-file', payload: { file: history[history.length - 2] } })
-            setHistory(history.filter((file, index) => index != history.length - 1))
-        }
-    }
 
     return (
-        <section className='border bg-egg-600 border-black mt-5 pb-5'>
-            <menu className='bg-orange-300 border-b border-orange-500 mb-5 p-1'>
-                <PiKeyReturnFill className={`text-2xl ${history.length == 1 && 'text-orange-300'} ${history.length > 1 && 'cursor-pointer'}`} onClick={handleBackButton} />
-            </menu>
+        <>
             {state.gFiles.length > 0 && state.gFiles[0].mimeType !== 'undef' ?
-                <ol className='grid grid-cols-4 gap-3'>
+                <ol className='grid grid-cols-4 gap-3 '>
                     {state.gFiles.map((file, index) => (
                         <li key={index} className='flex flex-col justify-center items-center'>
                             {file.mimeType === 'application/vnd.google-apps.folder' ?
@@ -82,7 +69,7 @@ export default function FileList({ main_file }: FileListProps) {
                     :
                     <p className='uppercase text-2xl font-medium bg-orange-300 border border-orange-500 rounded-sm py-3 px-3 mx-14 text-center'>Cargando...</p>
             }
-        </section>
+        </>
     )
 
 }
