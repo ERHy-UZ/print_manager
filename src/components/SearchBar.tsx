@@ -14,9 +14,13 @@ export default function SearchBar() {
   }
 
   const handleUpload = () => {
-    dispatch({type: 'set-search-text', payload: {search}})
+    if (search && search.size > 5) {
+      dispatch({ type: 'set-selected-csv', payload: { csv: '' } })
+      dispatch({ type: 'set-search-text', payload: { search } })
 
-    setSearch(typeof window !== "undefined" ? new File(['empty'], 'Seleccione CSV local...') : null)
+      setSearch(typeof window !== "undefined" ? new File(['empty'], 'Seleccione CSV local...') : null)
+    }
+
   }
 
   return (
