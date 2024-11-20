@@ -74,7 +74,7 @@ export default function FileList({ main_file }: FileListProps) {
                                     :
                                     <FaFileCircleXmark className='text-[5rem] text-blue-200' />
                             }
-                            <p className='truncate w-52 text-center'>{file.name}</p>
+                            <p className='truncate w-52 text-center'>{file.name.startsWith('papercut-print-log-') ? file.name.slice(19) : file.name}</p>
                         </li>
                     ))}
                 </ol>
