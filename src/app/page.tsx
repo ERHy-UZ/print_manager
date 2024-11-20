@@ -1,5 +1,4 @@
 import FileWindow from "@/components/FileWindow";
-import SearchBar from "@/components/SearchBar";
 import TableData from "@/components/TableData";
 
 export default function Home() {
@@ -8,7 +7,6 @@ export default function Home() {
 
   return (
     <div className='mx-48 my-10'>
-      <SearchBar />
       <FileWindow main_file={main_file!}/>
       <TableData />
     </div>

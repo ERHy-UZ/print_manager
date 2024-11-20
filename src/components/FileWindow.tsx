@@ -5,6 +5,7 @@ import { useState } from "react"
 import { PiKeyReturnFill } from "react-icons/pi";
 import { FaMinimize, FaMaximize } from "react-icons/fa6";
 import FileList from "./FileList";
+import SearchBar from "./SearchBar";
 
 type FileListProps = {
     main_file: string
@@ -42,6 +43,7 @@ export default function FileWindow({ main_file }: FileListProps) {
                 }
             </menu>
             <div className={`${!isOpen && 'hidden'} my-5`}>
+                <SearchBar />
                 <FileList
                     isBackSelected={isBackSelected}
                     setBackSelected={setBackSelected}
