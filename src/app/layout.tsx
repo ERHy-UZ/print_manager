@@ -3,23 +3,17 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ManagerProvider from "@/context/ManagerContext";
 
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+const gmx = localFont({
+  src: "./fonts/GMX-Regular.otf",
+  variable: "--font-gmx",
   weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+})
 
 export const metadata: Metadata = {
   title: "PRINT MANAGER",
   description: "Aplicacion que permite administrar las impresiones",
 };
-
+  
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <ManagerProvider>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} bg-egg-900 antialiased`}
+          className={`${gmx.variable} bg-egg-900 antialiased`}
         >
           {children}
         </body>
