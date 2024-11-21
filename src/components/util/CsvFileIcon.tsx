@@ -23,13 +23,13 @@ export function CsvFileIcon({ fileName, fileId }: csvIconFileType) {
 
     switch (newFileName.length) {
         case 11:
-            return <FaCalendarAlt className={`text-[5rem] ${isSelected ? 'text-green-500' : 'text-blue-500 hover:text-blue-400 cursor-pointer'}`} onDoubleClick={handleDoubleClick} />
+            return <FaCalendarAlt className={`text-[5rem] ${isSelected ? 'text-pantone-626' : 'text-blue-500 hover:text-blue-400 cursor-pointer'}`} onDoubleClick={handleDoubleClick} />
         case 14:
-            return <FaClock className={`text-[5rem] ${isSelected ? 'text-green-500' : 'text-blue-500 hover:text-blue-400 cursor-pointer'}`} onDoubleClick={handleDoubleClick} />
+            return <FaClock className={`text-[5rem] ${isSelected ? 'text-pantone-626' : 'text-blue-500 hover:text-blue-400 cursor-pointer'}`} onDoubleClick={handleDoubleClick} />
         case 12:
-            return <FaGlobe className={`text-[5rem] ${isSelected ? 'text-green-500' : 'text-blue-500 hover:text-blue-400 cursor-pointer'}`} onDoubleClick={handleDoubleClick} />
+            return <FaGlobe className={`text-[5rem] ${isSelected ? 'text-pantone-626' : 'text-blue-500 hover:text-blue-400 cursor-pointer'}`} onDoubleClick={handleDoubleClick} />
         default:
-            return <FaFile className={`text-[5rem] ${isSelected ? 'text-green-500' : 'text-blue-500 hover:text-blue-400 cursor-pointer'}`} onDoubleClick={handleDoubleClick} />
+            return <FaFile className={`text-[5rem] ${isSelected ? 'text-pantone-626' : 'text-blue-500 hover:text-blue-400 cursor-pointer'}`} onDoubleClick={handleDoubleClick} />
     }
 
 }

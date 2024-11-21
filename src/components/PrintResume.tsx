@@ -15,7 +15,7 @@ export default function PrintResume({ records }: PrintResumeProps) {
     const printedPages = records.reduce((total, record) => total + ((parseInt(record[pagIndex]) ? parseInt(record[pagIndex]) : 0) * (parseInt(record[copIndex]) ? parseInt(record[copIndex]) : 0)), 0)
 
     return (
-        <section className='grid grid-cols-2 border border-orange-600 bg-orange-300 rounded-sm m-5 text-2xl uppercase py-10'>
+        <section className='grid grid-cols-2 border border-pantone-7421 bg-pantone-7420 rounded-sm m-5 text-2xl text-white uppercase py-10'>
             <p className='flex justify-center'>{usrName}</p>
             <p className='flex justify-center'>{printedPages ? `${printedPages} ${printedPages > 1 ? 'hojas' : 'hoja' }` : 'error al contar  '}</p>
         </section>

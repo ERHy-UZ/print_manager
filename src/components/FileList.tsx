@@ -67,7 +67,7 @@ export default function FileList({ isBackSelected, setBackSelected, setHistory }
                 state.gFiles.length > 0 ?
                     <p className='uppercase text-2xl font-medium bg-red-300 border border-red-500 rounded-sm py-3 px-3 mx-14 text-center'>Carpeta Vacia</p>
                     :
-                    <p className='uppercase text-2xl font-medium bg-orange-300 border border-orange-500 rounded-sm py-3 px-3 mx-14 text-center'>Cargando...</p>
+                    <p className='uppercase text-2xl font-medium bg-pantone-626 border border-pantone-627 text-white rounded-sm py-3 px-3 mx-14 text-center'>Cargando...</p>
             }
         </>
     )

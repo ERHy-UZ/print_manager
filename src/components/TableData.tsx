@@ -34,15 +34,15 @@ export default function TableData() {
                         <section className='overflow-x-auto border border-black m-5'>
                             <table>
                                 <thead>
-                                    <tr className='border-b border-orange-600 bg-orange-300'>
+                                    <tr className='border-b border-pantone-7421 bg-pantone-7420'>
                                         {state.records[1].map((record, index) => (
-                                            <th key={index} className='border-r border-orange-600 last-of-type:border-r-0 px-8 text-sm uppercase'>{record}</th>
+                                            <th key={index} className='border-r border-black last-of-type:border-r-0 px-8 text-sm uppercase text-white'>{record}</th>
                                         ))}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {state.records.filter((records, index) => index > 1).map((record, index) => (
-                                        <tr key={index} className='border-b last-of-type:border-b-0 border-yellow-900 bg-egg-900 '>
+                                        <tr key={index} className='border-b last-of-type:border-b-0 border-yellow-900 bg-pantone-468'>
                                             {record.map((item, index) => (
                                                 <td key={index} className='border-r border-yellow-900 last-of-type:border-r-0 text-center py-1'>{item}</td>
                                             ))}
@@ -51,7 +51,7 @@ export default function TableData() {
                                 </tbody>
                             </table>
                         </section>
-                        <button className='absolute top-5 left-full bg-orange-300 hover:bg-orange-500 text-2xl px-2 hover:px-3 py-1 rounded-r-md border border-black' onClick={handlePrint as any} >
+                        <button className='absolute top-5 left-full bg-pantone-7420 hover:bg-pantone-7421 text-2xl text-pantone-468 px-2 hover:px-3 py-1 rounded-r-md border border-black' onClick={handlePrint as any} >
                             <FaPrint />
                         </button>
                     </>

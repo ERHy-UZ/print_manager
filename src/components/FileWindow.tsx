@@ -34,12 +34,12 @@ export default function FileWindow({ main_file }: FileListProps) {
 
     return (
         <section className='border bg-egg-600 border-black mt-5'>
-            <menu className='flex items-center justify-between px-3 bg-orange-300 border-b border-orange-500 p-1'>
-                <PiKeyReturnFill className={`text-2xl ${history.length === 1 || !isOpen ? 'text-orange-300' : 'text-black'} ${history.length > 1 && isOpen && 'cursor-pointer'}`} onClick={handleBackButton} />
+            <menu className='flex items-center justify-between px-3 bg-pantone-7420 border-b border-pantone-7421 p-1'>
+                <PiKeyReturnFill className={`text-2xl ${history.length === 1 || !isOpen ? 'text-pantone-7420' : 'text-pantone-468'} ${history.length > 1 && isOpen && 'cursor-pointer'}`} onClick={handleBackButton} />
                 {isOpen ?
-                    <FaMinimize className='text-xl cursor-pointer' onClick={handleMaxMinWindow} />
+                    <FaMinimize className='text-xl cursor-pointer text-pantone-468' onClick={handleMaxMinWindow} />
                     :
-                    <FaMaximize className='text-xl cursor-pointer' onClick={handleMaxMinWindow} />
+                    <FaMaximize className='text-xl cursor-pointer text-pantone-468' onClick={handleMaxMinWindow} />
                 }
             </menu>
             <div className={`${!isOpen && 'hidden'} my-5`}>
