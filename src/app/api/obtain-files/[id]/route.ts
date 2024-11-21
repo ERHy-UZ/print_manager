@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 import { google } from "googleapis"
 
-export async function GET(req: NextRequest, context: { params: { id: string } }) {
+export async function GET(req: NextRequest, context: { id: string } ) {
 
-    const { id } = await context.params
+    const { id } = await context
 
     const auth = new google.auth.GoogleAuth({
         keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,

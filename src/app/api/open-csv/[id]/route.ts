@@ -4,9 +4,9 @@ import { parse } from "papaparse";
 import * as stream from 'stream'
 import { promisify } from "util"
 
-export async function GET(req: NextRequest, context: { params: { id: string } }) {
+export async function GET(req: NextRequest, context: { id: string } ) {
 
-    const { id } = await context.params
+    const { id } = await context
     const data : string[][] = []
 
     const auth = new google.auth.GoogleAuth({
