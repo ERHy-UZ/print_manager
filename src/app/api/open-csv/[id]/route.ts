@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { google } from "googleapis"
 import { parse } from "papaparse";
 import * as stream from 'stream'
 import { promisify } from "util"
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
 
     const { id } = await params
     const data : string[][] = []
