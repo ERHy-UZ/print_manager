@@ -19,7 +19,16 @@ export default function FileList({ isBackSelected, setBackSelected, setHistory }
         fetch(`/api/obtain-files`)
             .then(response => response.json())
             .then(data => dispatch({ type: 'set-files', payload: { files: data.files } }))
-            .catch(error => console.log('Error: ', error))
+            .catch(error => dispatch({
+                type: 'set-files', payload: {
+                    files: [{
+                        kind: 'ERROR OBTENIENDO ARCHIVOS',
+                        mimeType: 'ERROR',
+                        id: 'F0A',
+                        name: 'ERROR FOA00'
+                    }]
+                }
+            }))
     }, [])
 
     useEffect(() => {
@@ -40,7 +49,16 @@ export default function FileList({ isBackSelected, setBackSelected, setHistory }
             fetch(`/api/open-csv/${state.selectedCSV}`)
                 .then(response => response.json())
                 .then(data => dispatch({ type: 'set-records', payload: { records: data } }))
-                .catch(error => console.log('Error: ', error))
+                .catch(error => dispatch({
+                    type: 'set-files', payload: {
+                        files: [{
+                            kind: 'ERROR OBTENIENDO CONTENIDO',
+                            mimeType: 'ERROR',
+                            id: 'FCD',
+                            name: 'ERROR FCD00'
+                        }]
+                    }
+                }))
         }
     }, [state.selectedCSV])
 
