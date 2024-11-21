@@ -29,7 +29,7 @@ export default function FileList({ isBackSelected, setBackSelected, setHistory }
                     }]
                 }
             }))
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         if (state.selectedFile) {
@@ -51,7 +51,7 @@ export default function FileList({ isBackSelected, setBackSelected, setHistory }
                     }
                 }))
         }
-    }, [state.selectedFile])
+    }, [state.selectedFile, dispatch])
 
     useEffect(() => {
         if (state.selectedCSV) {
@@ -60,7 +60,7 @@ export default function FileList({ isBackSelected, setBackSelected, setHistory }
                 .then(data => dispatch({ type: 'set-records', payload: { records: data } }))
                 .catch(error => console.log(error))
         }
-    }, [state.selectedCSV])
+    }, [state.selectedCSV, dispatch])
 
 
     return (
