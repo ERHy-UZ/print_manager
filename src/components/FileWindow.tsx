@@ -20,7 +20,7 @@ export default function FileWindow({ main_file }: FileListProps) {
     const [isBackSelected, setBackSelected] = useState<boolean>(false)
 
     const handleBackButton = () => {
-        if (history.length > 1) {
+        if (history.length > 1 && isOpen) {
             setBackSelected(true)
 
             dispatch({ type: 'set-selected-file', payload: { file: history[history.length - 2] } })
@@ -35,7 +35,7 @@ export default function FileWindow({ main_file }: FileListProps) {
     return (
         <section className='border bg-egg-600 border-black mt-5'>
             <menu className='flex items-center justify-between px-3 bg-orange-300 border-b border-orange-500 p-1'>
-                <PiKeyReturnFill className={`text-2xl ${history.length == 1 && 'text-orange-300'} ${history.length > 1 && 'cursor-pointer'}`} onClick={handleBackButton} />
+                <PiKeyReturnFill className={`text-2xl ${history.length === 1 || !isOpen ? 'text-orange-300' : 'text-black'} ${history.length > 1 && isOpen && 'cursor-pointer'}`} onClick={handleBackButton} />
                 {isOpen ?
                     <FaMinimize className='text-xl cursor-pointer' onClick={handleMaxMinWindow} />
                     :
