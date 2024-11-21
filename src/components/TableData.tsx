@@ -13,7 +13,7 @@ export default function TableData() {
     const { state, dispatch } = useManager()
 
     const contentRef = useRef<HTMLElement>(null)
-    const handlePrint = useReactToPrint({ contentRef })
+    const handlePrint = useReactToPrint({ contentRef, documentTitle: `Print_Log_${new Date().getTime()}` })
 
     useEffect(() => {
         if (state.search_text && state.search_text.size > 5) {
