@@ -23,7 +23,7 @@ export default function TableData() {
                 }
             })
         }
-    }, [state.search_text])
+    }, [state.search_text, dispatch])
 
     return (
         <main ref={contentRef} className='relative border bg-egg-600 border-black mt-5 text-xs'>
