@@ -3,11 +3,17 @@
 import { parse } from "papaparse";
 import { useManager } from "@/app/hooks/useManager";
 import PrintResume from "@/components/PrintResume";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { useReactToPrint } from "react-to-print";
+import { FaPrint } from "react-icons/fa6";
+
 
 export default function TableData() {
 
     const { state, dispatch } = useManager()
+
+    const contentRef = useRef<HTMLElement>(null)
+    const handlePrint = useReactToPrint({ contentRef })
 
     useEffect(() => {
         if (state.search_text && state.search_text.size > 5) {
@@ -19,9 +25,8 @@ export default function TableData() {
         }
     }, [state.search_text])
 
-
     return (
-        <main className='border bg-egg-600 border-black mt-5 text-xs'>
+        <main ref={contentRef} className='relative border bg-egg-600 border-black mt-5 text-xs'>
             {state.records.length ?
                 state.records[0][0] === 'PaperCut Print Logger - http://www.papercut.com/' ?
                     <>
@@ -31,7 +36,7 @@ export default function TableData() {
                                 <thead>
                                     <tr className='border-b border-orange-600 bg-orange-300'>
                                         {state.records[1].map((record, index) => (
-                                            <th key={index} className='border-r border-orange-600 last-of-type:border-r-0 px-10 text-sm uppercase'>{record}</th>
+                                            <th key={index} className='border-r border-orange-600 last-of-type:border-r-0 px-8 text-sm uppercase'>{record}</th>
                                         ))}
                                     </tr>
                                 </thead>
@@ -46,6 +51,9 @@ export default function TableData() {
                                 </tbody>
                             </table>
                         </section>
+                        <button className='absolute top-5 left-full bg-orange-300 hover:bg-orange-500 text-2xl px-2 hover:px-3 py-1 rounded-r-md border border-black' onClick={handlePrint as any} >
+                            <FaPrint />
+                        </button>
                     </>
                     :
                     <section className='flex w-full h-full justify-center items-center'>
