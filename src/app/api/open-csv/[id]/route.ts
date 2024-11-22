@@ -4,10 +4,23 @@ import { parse } from "papaparse";
 import * as stream from 'stream'
 import { promisify } from "util"
 
-export async function GET(req: NextRequest, context: { id: string } ) {
+export async function GET(req: NextRequest) {
 
-    const { id } = await context
-    const data : string[][] = []
+    const url = req.nextUrl.pathname
+    const id = url.split('/')[3]
+
+    if (!id) {
+        return NextResponse.json({
+            files: [{
+                kind: 'NO SE PROPORCIONO ID',
+                mimeType: 'ERROR',
+                id: 'NI01',
+                name: 'ERROR NI01'
+            }]
+        }, { status: 400 })
+    }
+
+    const data: string[][] = []
 
     const auth = new google.auth.GoogleAuth({
         keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
@@ -43,6 +56,6 @@ export async function GET(req: NextRequest, context: { id: string } ) {
         }
     })
 
-    return NextResponse.json(data);
+    return NextResponse.json(data)
 
 }
