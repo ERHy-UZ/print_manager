@@ -25,6 +25,10 @@ export default function TableData() {
         }
     }, [state.search_text, dispatch])
 
+    const handleButtonPrint = () => {
+        handlePrint()
+    }
+
     return (
         <main ref={contentRef} className='relative border bg-egg-600 border-black mt-5 text-xs'>
             {state.records.length ?
@@ -51,7 +55,7 @@ export default function TableData() {
                                 </tbody>
                             </table>
                         </section>
-                        <button className='absolute top-5 left-full bg-pantone-7420 hover:bg-pantone-7421 text-2xl text-pantone-468 px-2 hover:px-3 py-1 rounded-r-md border border-black' onClick={handlePrint} >
+                        <button className='absolute top-5 left-full bg-pantone-7420 hover:bg-pantone-7421 text-2xl text-pantone-468 px-2 hover:px-3 py-1 rounded-r-md border border-black' onClick={handleButtonPrint} >
                             <FaPrint />
                         </button>
                     </>

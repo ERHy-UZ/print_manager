@@ -17,7 +17,7 @@ export function CsvFileIcon({ fileName, fileId }: csvIconFileType) {
     const isSelected = useMemo(() => state.selectedCSV === fileId, [state.selectedCSV, fileId])
 
     const handleDoubleClick = () => {
-        if (isSelected) {
+        if (!isSelected) {
             dispatch({ type: 'set-selected-csv', payload: { csv: fileId } })
         }
     }
