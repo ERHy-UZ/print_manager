@@ -66,7 +66,7 @@ export default function FileList({ isBackSelected, setBackSelected, setHistory }
     return (
         <>
             {state.gFiles.length > 0 && state.gFiles[0].mimeType !== 'undef' ?
-                <ol className='grid grid-cols-3 sm:grid-cols-4 gap-2 md:gap-3 '>
+                <ol className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3 '>
                     {state.gFiles.map((file, index) => (
                         <li key={index} className='flex flex-col justify-center items-center'>
                             {file.mimeType === 'application/vnd.google-apps.folder' ?
