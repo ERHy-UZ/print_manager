@@ -24,8 +24,8 @@ export default function SearchBar() {
   }
 
   return (
-    <header className='flex pb-5 px-20'>
-      <label htmlFor='file_csv' className='flex items-center w-full ring-1 hover:ring-2 bg-pantone-468 ring-black hover:ring-pantone-7420 text-lg pl-5 py-1 cursor-pointer truncate'>
+    <header className='flex pb-5 px-5 md:px-10 lg:px-20'>
+      <label htmlFor='file_csv' className='flex items-center w-full ring-1 hover:ring-2 bg-pantone-468 ring-black hover:ring-pantone-7420 text-xs sm:text-base lg:text-lg pl-1 md:pl-3 lg:pl-5 py-1 cursor-pointer truncate'>
         <p className='uppercase text-black'>{search ? search.name : 'Seleccione CSV local...'}</p>
       </label>
       <input
@@ -37,7 +37,7 @@ export default function SearchBar() {
       />
       <button
         onClick={handleUpload}
-        className='bg-pantone-7420 hover:bg-pantone-7421 px-5 ring-1 ring-pantone-7421 rounded-r-sm text-xl'>
+        className='bg-pantone-7420 hover:bg-pantone-7421 px-2 sm:px-3 lg:px-5 ring-1 ring-pantone-7421 rounded-r-sm text-sm sm:text-lg lg:text-xl'>
         <FaFileUpload className='text-pantone-468' />
       </button>
     </header>
