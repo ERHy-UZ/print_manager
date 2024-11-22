@@ -25,9 +25,7 @@ export default function TableData() {
         }
     }, [state.search_text, dispatch])
 
-    const handleButtonPrint = () => {
-        handlePrint()
-    }
+    const handleButtonPrint = () => handlePrint()
 
     return (
         <main ref={contentRef} className='relative border bg-egg-600 border-black mt-5 text-xs'>
