@@ -11,6 +11,8 @@ type FileListProps = {
     setHistory: Dispatch<SetStateAction<string[]>>
 }
 
+const ALL_TIME_FILE = 'papercut-print-log-all-time.csv'
+
 export default function FileList({ isBackSelected, setBackSelected, setHistory }: FileListProps) {
 
     const { state, dispatch } = useManager()
@@ -67,7 +69,7 @@ export default function FileList({ isBackSelected, setBackSelected, setHistory }
         <>
             {state.gFiles.length > 0 && state.gFiles[0].mimeType !== 'undef' ?
                 <ol className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3 '>
-                    {state.gFiles.map((file, index) => (
+                    {state.gFiles.filter(file => file.name === ALL_TIME_FILE).concat(state.gFiles.filter(file => file.name !== ALL_TIME_FILE)).map((file, index) => (
                         <li key={index} className='flex flex-col justify-center items-center'>
                             {file.mimeType === 'application/vnd.google-apps.folder' ?
                                 <FaFolder className='text-[4rem] md:text-[5rem] text-amber-500 hover:text-amber-400 cursor-pointer' onDoubleClick={() => dispatch({ type: 'set-selected-file', payload: { file: file.id } })} />
